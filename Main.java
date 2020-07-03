@@ -30,7 +30,6 @@ public class Main {
  */
 
         createPlayfield(worldChunk,x,y);
-
         Room.addPlayer(worldChunk,0,0);
 
         printPlayfield(worldChunk);
@@ -39,14 +38,20 @@ public class Main {
         askInput();
         Scanner scan = new Scanner(System.in);
         input = scan.nextLine();
-
         processInput(worldChunk, x,y,input);
+
+
         printPlayfield(worldChunk);
+
+        /*
+        Removing player again
 
         Room.removePlayer(worldChunk);
         System.out.println(Room.getWorldDisplay(worldChunk));
 
         printPlayfield(worldChunk);
+
+         */
 
     }
 

@@ -6,28 +6,11 @@ public class Main {
     public static void main(String[] args) {
 
 
-        //WorldChunk worldChunk = new WorldChunk();
-        //WorldChunk [][] worldChunk = new WorldChunk[][];
-        //worldChunk.rooms = new WorldChunk[][];
-
-        Room room = new Room(2,5);
-
         char[][] worldChunk = new char[Config.DEFAULT_CHUNK_SIZE][Config.DEFAULT_CHUNK_SIZE];
         String input;
         int x = 3;
         int y = 3;
 
-/*
-        - Maak een (world)chunk
-                - Voeg de speler toe aan de chunk op positie 0,0
-                - Loop:
-        - Vraag input
-                - Als input == x >> Exit programma
-                - Als input in (nsew) >> verplaats speler
-                - Alle andere input >> Ongeldige input
-        - end loop
-
- */
 
         createPlayfield(worldChunk,x,y);
         Room.addPlayer(worldChunk,0,0);
@@ -43,15 +26,6 @@ public class Main {
 
         printPlayfield(worldChunk);
 
-        /*
-        Removing player again
-
-        Room.removePlayer(worldChunk);
-        System.out.println(Room.getWorldDisplay(worldChunk));
-
-        printPlayfield(worldChunk);
-
-         */
 
     }
 

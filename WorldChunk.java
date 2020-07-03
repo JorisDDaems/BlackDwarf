@@ -19,7 +19,6 @@ public class WorldChunk {
 
 
     private static void movePlayer(String direction){
-
     }
 
     @Override

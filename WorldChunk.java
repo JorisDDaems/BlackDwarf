@@ -5,13 +5,22 @@ import java.util.Arrays;
 public class WorldChunk {
 
     Room [][] rooms;
+    int x;
+    int y;
 
-    WorldChunk(){}
+    WorldChunk(){
+        this(Config.DEFAULT_CHUNK_SIZE, Config.DEFAULT_CHUNK_SIZE);
+    }
 
-    WorldChunk(int x, int y){}
+    WorldChunk(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
 
-    private static void movePlayer(String direction){}
+    private static void movePlayer(String direction){
+
+    }
 
     @Override
     public String toString() {

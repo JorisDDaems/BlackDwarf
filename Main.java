@@ -5,40 +5,53 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        char[][] gameArea = new char[Config.DEFAULT_CHUNK_SIZE][Config.DEFAULT_CHUNK_SIZE];
+
+        //WorldChunk worldChunk = new WorldChunk();
+        //WorldChunk [][] worldChunk = new WorldChunk[][];
+        //worldChunk.rooms = new WorldChunk[][];
+
+        Room room = new Room(2,5);
+
+        char[][] worldChunk = new char[Config.DEFAULT_CHUNK_SIZE][Config.DEFAULT_CHUNK_SIZE];
+        String input;
         int x = 3;
         int y = 3;
-        String input;
 
+/*
+        - Maak een (world)chunk
+                - Voeg de speler toe aan de chunk op positie 0,0
+                - Loop:
+        - Vraag input
+                - Als input == x >> Exit programma
+                - Als input in (nsew) >> verplaats speler
+                - Alle andere input >> Ongeldige input
+        - end loop
 
+ */
 
-        createPlayfield(gameArea,x,y);
+        createPlayfield(worldChunk,x,y);
 
-        Room.addPlayer(gameArea,0,0);
+        Room.addPlayer(worldChunk,0,0);
 
-        printPlayfield(gameArea);
-
-        System.out.println(Room.containsPlayer(gameArea));
-
-        System.out.println(Room.getWorldDisplay(gameArea));
+        printPlayfield(worldChunk);
 
 
         askInput();
         Scanner scan = new Scanner(System.in);
         input = scan.nextLine();
 
-        processInput(gameArea, x,y,input);
-        printPlayfield(gameArea);
+        processInput(worldChunk, x,y,input);
+        printPlayfield(worldChunk);
 
-        Room.removePlayer(gameArea);
-        System.out.println(Room.getWorldDisplay(gameArea));
+        Room.removePlayer(worldChunk);
+        System.out.println(Room.getWorldDisplay(worldChunk));
 
-        printPlayfield(gameArea);
+        printPlayfield(worldChunk);
 
     }
 
 
-    private static void createPlayfield(char[][] gamearea, int x, int y) {
+    private static void createPlayfield(char [][] gamearea, int x, int y) {
         for (int i = 0; i < gamearea.length; i++) {
             for (int j = 0; j < gamearea.length; j++) {
                 gamearea[i][j] = '.';
@@ -61,7 +74,6 @@ public class Main {
         System.out.println("Possible directions: (N)orth, (S)outh, (E)ast, (W)est.");
         System.out.println("Press (X) to quit.");
     }
-
 
     private static void processInput(char[][] gameArea, int x, int y, String answer) {
 

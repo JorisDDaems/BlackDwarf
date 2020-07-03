@@ -5,19 +5,34 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        char[][] gameArea = new char[10][10];
+        char[][] gameArea = new char[Config.DEFAULT_CHUNK_SIZE][Config.DEFAULT_CHUNK_SIZE];
         int x = 3;
         int y = 3;
-        String answer;
+        String input;
+
+
 
         createPlayfield(gameArea,x,y);
+
+        Room.addPlayer(gameArea,0,0);
+
         printPlayfield(gameArea);
+
+        System.out.println(Room.containsPlayer(gameArea));
+
+        System.out.println(Room.getWorldDisplay(gameArea));
+
 
         askInput();
         Scanner scan = new Scanner(System.in);
-        answer = scan.nextLine();
+        input = scan.nextLine();
 
-        processInput(gameArea, x,y,answer);
+        processInput(gameArea, x,y,input);
+        printPlayfield(gameArea);
+
+        Room.removePlayer(gameArea);
+        System.out.println(Room.getWorldDisplay(gameArea));
+
         printPlayfield(gameArea);
 
     }
@@ -29,7 +44,7 @@ public class Main {
                 gamearea[i][j] = '.';
             }
         }
-        gamearea[x][y] = '@';
+        gamearea[x][y] = Config.PLAYER;
     }
 
     private static void printPlayfield(char[][] gameArea) {

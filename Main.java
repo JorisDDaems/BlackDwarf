@@ -5,40 +5,32 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        char[][] gameArea = new char[Config.DEFAULT_CHUNK_SIZE][Config.DEFAULT_CHUNK_SIZE];
+        // WorldChunk worldChunk = new WorldChunk();
+
+        char[][] worldChunk = new char[Config.DEFAULT_CHUNK_SIZE][Config.DEFAULT_CHUNK_SIZE];
+        String input;
         int x = 3;
         int y = 3;
-        String input;
 
 
+        createPlayfield(worldChunk,x,y);
 
-        createPlayfield(gameArea,x,y);
-
-        Room.addPlayer(gameArea,0,0);
-
-        printPlayfield(gameArea);
-
-        System.out.println(Room.containsPlayer(gameArea));
-
-        System.out.println(Room.getWorldDisplay(gameArea));
+        printPlayfield(worldChunk);
 
 
         askInput();
         Scanner scan = new Scanner(System.in);
         input = scan.nextLine();
+        processInput(worldChunk, x,y,input);
 
-        processInput(gameArea, x,y,input);
-        printPlayfield(gameArea);
 
-        Room.removePlayer(gameArea);
-        System.out.println(Room.getWorldDisplay(gameArea));
+        printPlayfield(worldChunk);
 
-        printPlayfield(gameArea);
 
     }
 
 
-    private static void createPlayfield(char[][] gamearea, int x, int y) {
+    private static void createPlayfield(char [][] gamearea, int x, int y) {
         for (int i = 0; i < gamearea.length; i++) {
             for (int j = 0; j < gamearea.length; j++) {
                 gamearea[i][j] = '.';
@@ -61,7 +53,6 @@ public class Main {
         System.out.println("Possible directions: (N)orth, (S)outh, (E)ast, (W)est.");
         System.out.println("Press (X) to quit.");
     }
-
 
     private static void processInput(char[][] gameArea, int x, int y, String answer) {
 

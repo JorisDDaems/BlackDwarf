@@ -23,7 +23,7 @@ public class Room {
     public void addPlayer(){
         this.containsPlayer = true;
     }
-    
+
     public void removePlayer(){
         this.containsPlayer = false;
     }

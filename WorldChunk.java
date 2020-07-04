@@ -20,7 +20,24 @@ public class WorldChunk {
     }
 
 
-    private static void movePlayer(String direction){
+    private void movePlayer(String direction){
+
+        // player present?
+        // findPlayer through objectsearch
+        // safe location
+        // take input in form of direction string
+        // move the player
+
+        Room room = new Room(0,0);
+
+        for (int i = 0; i<rooms.length; i++ ){
+            for (int j = 0; j < rooms.length; j++) {
+                if (room.containsPlayer()){
+                    Room rooms = new Room(i,j);
+                }
+            }
+        }
+
 
 
     }
@@ -28,7 +45,7 @@ public class WorldChunk {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("WorldChunk{");
-        sb.append("rooms=").append(Arrays.toString(rooms));
+        sb.append("rooms=").append(Arrays.toString(rooms)); // dit moet nog aangepast worden
         sb.append('}');
         return sb.toString();
     }

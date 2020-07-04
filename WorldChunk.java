@@ -4,21 +4,25 @@ import java.util.Arrays;
 
 public class WorldChunk {
 
-    Room [][] rooms;
-    int x;
-    int y;
+    private Room [][] rooms;
 
-    WorldChunk(){
+
+    public WorldChunk(){
         this(Config.DEFAULT_CHUNK_SIZE, Config.DEFAULT_CHUNK_SIZE);
     }
 
-    WorldChunk(int x, int y){
-        this.x = x;
-        this.y = y;
+    public WorldChunk(int x){
+        this(x,x);
+    }
+
+    public WorldChunk(int x, int y){
+        this.rooms = new Room[x][y];
     }
 
 
     private static void movePlayer(String direction){
+
+
     }
 
     @Override

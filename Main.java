@@ -13,7 +13,6 @@ public class Main {
 
 
         createPlayfield(worldChunk,x,y);
-        Room.addPlayer(worldChunk,0,0);
 
         printPlayfield(worldChunk);
 

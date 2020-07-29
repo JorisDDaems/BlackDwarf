@@ -9,12 +9,12 @@ public class Room {
     private int x;
     private int y;
 
+
     public Room (int x , int y){
         this.x = x;
         this.y = y;
         this.location = new int[]{x,y};
     }
-
 
     public boolean containsPlayer(){
         return this.containsPlayer;
@@ -36,6 +36,9 @@ public class Room {
         }
     }
 
+    public int[] getLocation() {
+        return location;
+    }
 
     @Override
     public String toString() {

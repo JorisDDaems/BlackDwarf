@@ -8,7 +8,7 @@ public class Main {
         Room[][] world = new Room[10][10];
 
         Room room = new Room(2,0);
-        
+
         /*
         for (Room[] s : world) {
             for (Room r : s) System.out.print(room.getWorldDisplay());

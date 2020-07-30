@@ -35,6 +35,8 @@ public class WorldChunk {
             }
         }
         showWorldChunk(rooms);
+        System.out.println();
+        System.out.println(rooms[a][b].toString());
     }
 
 
@@ -45,7 +47,10 @@ public class WorldChunk {
         do {
 
             do {
-            System.out.println("ask input");
+            System.out.println("\n");
+            System.out.println("What direction do you want to go:");
+            System.out.println("Possible directions: (N)orth, (S)outh, (E)ast, (W)est");
+            System.out.println("Enter (X) to quit.");
             direction = scan.nextLine();
         } while (!Pattern.matches(Config.INPUT, direction));
 
@@ -55,7 +60,7 @@ public class WorldChunk {
 
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms.length; j++) {
-                if (rooms[i][j].getWorldDisplay() == '@') {
+                if (rooms[i][j].containsPlayer()) {
                     System.out.println("player is at this location" + rooms[i][j].toString());
                     x = i;
                     y = j;
@@ -127,7 +132,7 @@ public class WorldChunk {
 
             for (Room[] s : rooms) {
                 for (Room r : s) {
-                    System.out.print((r.getWorldDisplay()));
+                    System.out.print((r.getWorldDisplay() + "  "));
                 }
                 System.out.println();
             }
@@ -144,7 +149,6 @@ public class WorldChunk {
                 System.out.println();
             }
         }
-
 
 
 }

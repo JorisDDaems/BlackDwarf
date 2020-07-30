@@ -38,16 +38,16 @@ public class WorldChunk {
     }
 
 
-    public void movePlayer(String direction, Room room, Room[][] rooms) {
+    public void movePlayer(String direction, Room[][] rooms) {
 
         Scanner scan = new Scanner(System.in);
 
         do {
+
+            do {
             System.out.println("ask input");
             direction = scan.nextLine();
         } while (!Pattern.matches(Config.INPUT, direction));
-
-        // System.out.println("is input correct?" +Pattern.matches(Config.INPUT, direction));
 
 
         int x = 0;
@@ -63,53 +63,54 @@ public class WorldChunk {
             }
         }
 
+            switch (direction) {
+                case "X":
+                    System.out.println("See you next time!");
+                    break;
 
-        switch (direction) {
-            case "X":
-                System.out.println("See you next time!");
-                break;
+                case "N":
+                    if (x == 0) {
+                        System.out.println("cant go further north");
+                    } else {
+                        rooms[x][y].removePlayer();
+                        rooms[x-1][y].addPlayer();
+                    }
+                    break;
 
-            case "N":
-                if (x == 0) {
-                    System.out.println("cant go further north");
-                } else {
-                    rooms[x][y].removePlayer();
-                    rooms[x-1][y].addPlayer();
-                }
-                break;
+                case "S":
+                    if (x == rooms.length-1) {
+                        System.out.println("cant go further south");
+                    } else {
+                        rooms[x][y].removePlayer();
+                        rooms[x+1][y].addPlayer();
+                    }
+                    break;
 
-            case "S":
-                if (x == rooms.length-1) {
-                    System.out.println("cant go further south");
-                } else {
-                    rooms[x][y].removePlayer();
-                    rooms[x+1][y].addPlayer();
-                }
-                break;
+                case "E":
+                    if (y == 0) {
+                        System.out.println("cant go further east");
+                    } else {
+                        rooms[x][y].removePlayer();
+                        rooms[x][y-1].addPlayer();
+                    }
+                    break;
 
-            case "E":
-                if (y == 0) {
-                    System.out.println("cant go further east");
-                } else {
-                    rooms[x][y].removePlayer();
-                    rooms[x][y-1].addPlayer();
-                }
-                break;
+                case "W":
+                    if (y == rooms.length-1) {
+                        System.out.println("cant go further west");
+                    } else {
+                        rooms[x][y].removePlayer();
+                        rooms[x][y+1].addPlayer();
+                    }
+                    break;
 
-            case "W":
-                if (y == rooms.length-1) {
-                    System.out.println("cant go further west");
-                } else {
-                    rooms[x][y].removePlayer();
-                    rooms[x][y+1].addPlayer();
-                }
-                break;
+                default:
+                    System.out.println("Wrong input");
 
-            default:
-                System.out.println("Wrong input");
+            }
+            showWorldChunk(rooms);
+        } while (!Pattern.matches("X", direction));
 
-        }
-        showWorldChunk(rooms);
     }
 
 

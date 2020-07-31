@@ -1,6 +1,7 @@
 package be.intecbrussel;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -34,6 +35,20 @@ public class WorldChunk {
                 }
             }
         }
+        int occupiedSpots = 0;
+        Random random = new Random();
+
+        while(occupiedSpots < 8){
+            int x = random.nextInt(rooms.length);
+            int y = random.nextInt(rooms[0].length);
+            rooms[x][y] = new Room(x,y);
+
+            if(!rooms[x][y].containsPlayer()){
+                rooms[x][y].addLoot();
+                occupiedSpots++;
+            }
+        }
+
         showWorldChunk(rooms);
         System.out.println();
         System.out.println(rooms[a][b].toString());

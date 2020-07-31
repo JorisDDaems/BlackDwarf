@@ -25,6 +25,7 @@ public class Main {
         // zit mee in method hierboven
         //WorldChunk.showWorldChunk(world);
 
+
         worldChunk.movePlayer("", world);
 
     }
